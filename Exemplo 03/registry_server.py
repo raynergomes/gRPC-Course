@@ -4,7 +4,10 @@ services = {}
 
 @app.route('/index', methods=['GET'])
 def index():
-    return "<http> <body> Servidor de Registro </body> </http>"
+    saida = ""
+    for name, service in services.items():
+        saida += f"{name}:{service}"
+    return jsonify(saida), 200
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -25,4 +28,4 @@ def discover(name):
     return jsonify({"error": "Serviço não encontrado."}), 404
 
 if __name__ == '__main__':
-    app.run(port=8000)
+    app.run(port=8000, debug=True)
