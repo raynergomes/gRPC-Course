@@ -35,6 +35,5 @@ def run():
         except grpc.RpcError as e:
             print(f"Erro gRPC: {e.details()}")
 
-
 if __name__ == '__main__':
     run()
