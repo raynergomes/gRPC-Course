@@ -6,10 +6,8 @@ import sys
 
 
 def run():
-    # URL do servidor de registro para descobrir o serviço 'greeter_service'
     registry_url = 'http://localhost:8000/discover/greeter_service'
     print("Procurando o endereço do servidor no registro...")
-
     try:
         response = requests.get(registry_url)
         if response.status_code == 200:
@@ -19,7 +17,6 @@ def run():
         else:
             print("Erro: Servidor 'greeter_service' não encontrado no registro.")
             sys.exit(1)  # Sai do programa em caso de erro
-
     except requests.exceptions.ConnectionError:
         print("Erro: Não foi possível conectar ao servidor de registro.")
         print("Certifique-se de que o servidor de registro está em execução na porta 8000.")

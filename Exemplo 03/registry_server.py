@@ -13,11 +13,11 @@ def index():
 def register():
     data = request.json
     name = data.get('name')
+    ip = data.get('ip')
     port = data.get('port')
     if not name or not port:
         return jsonify({"error": "Nome e porta são obrigatórios."}), 400
-
-    services[name] = f"localhost:{port}"
+    services[name] = f"{ip}:{port}"
     return jsonify({"message": f"Serviço '{name}' registrado em localhost:{port}"}), 200
 
 @app.route('/discover/<name>', methods=['GET'])
